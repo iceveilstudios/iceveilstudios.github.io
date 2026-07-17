@@ -3,164 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050505">
+    
     <title>Thighito | Desenvolvedor Web</title>
-
     <meta name="description" content="Portfólio oficial de Thighito, desenvolvedor web e membro da Iceveil Studios.">
 
     <link rel="icon" href="logo-th.png">
     <link rel="stylesheet" href="style.css">
 
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div id="noise"></div>
-<div id="glow"></div>
+    <div id="noise" aria-hidden="true"></div>
+    <div id="glow" aria-hidden="true"></div>
 
-<header>
-
-    <div class="logo">
-        <img src="th.png" alt="Logo">
-        <span>THIGHITO</span>
-    </div>
-
-    <nav>
-
-        <a href="#home">Início</a>
-        <a href="#projects">Projetos</a>
-        <a href="#social">Redes</a>
-        <a href="#contact">Contato</a>
-
-    </nav>
-
-</header>
-
-<section class="hero" id="home">
-
-    <span class="badge">
-        Desenvolvedor Web • Iceveil Studios
-    </span>
-
-    <h2>CRIANDO</h2>
-
-    <h1>EXPERIÊNCIAS</h1>
-
-    <h2>PARA A WEB</h2>
-
-    <p>
-
-        Interfaces modernas, elegantes e rápidas.
-        Transformando ideias em experiências digitais.
-
-    </p>
-
-    <div class="buttons">
-
-        <a href="#projects" class="btn-red">
-            Ver Projetos
-        </a>
-
-        <a href="#contact" class="btn-outline">
-            Contato
-        </a>
-
-    </div>
-
-</section>
-
-<section id="projects">
-
-    <div class="section-title">
-
-        <span>PORTFÓLIO</span>
-
-        <h2>Projetos</h2>
-
-    </div>
-
-    <div class="cards">
-
-        <div class="card">
-
-            <h3>Iceveil Studios</h3>
-
-            <p>
-                Membro e amigo de fundadores da Iceveil Studios, uma empresa de desenvolvimento de software e jogos. Trabalhando em projetos de sistemas, landing pages e sites institucionais.
-            </p>
-
-            <button>Ver Projeto</button>
-
-        </div>
-
-        <div class="card">
-
-            <h3>Iniciar Pesquisa?</h3>
-
-            <p>
-                Um jogo web de terror inspirado em um jogo indie de mesmo nome. Desenvolvido com HTML, CSS e JavaScript, o jogo oferece uma experiência imersiva e assustadora para os jogadores.
-            </p>
-
-            <a href="https://codigobinario.net.br" target="_blank" class="btn-red">
-                Ver Projeto
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="#home" aria-label="Ir para o início">
+                <img src="th.png" alt="Logo Thighito">
+                <span>THIGHITO</span>
             </a>
 
+            <nav class="site-nav" aria-label="Navegação principal">
+                <a href="#home">Início</a>
+                <a href="#projects">Projetos</a>
+                <a href="#social">Redes</a>
+                <a href="#contact">Contato</a>
+            </nav>
         </div>
+    </header>
 
-    </div>
+    <main>
 
-</section>
+        <section class="hero section" id="home">
+            <div class="container hero-inner">
+                <span class="badge reveal">Desenvolvedor Web • Iceveil Studios</span>
 
-<section id="social">
+                <p class="hero-kicker reveal">PORTFÓLIO OFICIAL</p>
 
-    <div class="section-title">
+                <h1 class="hero-title">
+                    <span class="line line-1">CRIANDO</span>
+                    <span class="line line-2">EXPERIÊNCIAS</span>
+                    <span class="line line-3">PARA A WEB</span>
+                </h1>
 
-        <span>REDES</span>
+                <p class="hero-text reveal">
+                    Interfaces modernas, elegantes e rápidas.
+                    Transformando ideias em experiências digitais com identidade e impacto.
+                </p>
 
-        <h2>Conecte-se</h2>
+                <div class="hero-actions reveal">
+                    <a href="#projects" class="btn-red">Ver Projetos</a>
+                    <a href="#contact" class="btn-outline">Contato</a>
+                </div>
+            </div>
+        </section>
 
-    </div>
+        <section class="section section-block" id="projects">
+            <div class="container">
+                <div class="section-title reveal">
+                    <span>PORTFÓLIO</span>
+                    <h2>Projetos</h2>
+                </div>
 
-    <div class="social-grid">
+                <div class="cards">
+                    <article class="card reveal">
+                        <div class="card-top">
+                            <span class="card-tag">Institucional</span>
+                            <span class="card-index">01</span>
+                        </div>
 
-        <a href="https://github.com/thyghyto">GitHub</a>
-        <a href="https://www.instagram.com/thighito1">Instagram</a>
+                        <h3>Iceveil Studios</h3>
 
-    </div>
+                        <p>
+                            Membro e amigo de fundadores da Iceveil Studios, uma empresa de desenvolvimento de software e jogos.
+                            Trabalhando em projetos de sistemas, landing pages e sites institucionais.
+                        </p>
 
-</section>
+                        <a href="https://iceveil.com.br" target="_blank" rel="noopener noreferrer" class="card-link">
+                            Ver projeto
+                        </a>
+                    </article>
 
-<section id="contact">
+                    <article class="card reveal">
+                        <div class="card-top">
+                            <span class="card-tag">Jogo Web</span>
+                            <span class="card-index">02</span>
+                        </div>
 
-    <div class="contact-box">
+                        <h3>Iniciar Pesquisa?</h3>
 
-        <span>CONTATO</span>
+                        <p>
+                            Um jogo web de terror inspirado em um jogo indie de mesmo nome.
+                            Desenvolvido com HTML, CSS e JavaScript, criando uma experiência imersiva e assustadora.
+                        </p>
 
-        <h2>Vamos criar algo incrível?</h2>
+                        <a href="https://codigobinario.net.br" target="_blank" rel="noopener noreferrer" class="card-link">
+                            Ver projeto
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-        <p>
-            Entre em contato para novos projetos ou parcerias.
-        </p>
+        <section class="section section-block" id="social">
+            <div class="container">
+                <div class="section-title reveal">
+                    <span>REDES</span>
+                    <h2>Conecte-se</h2>
+                </div>
 
-        <a href="mailto:thighito@iceveil.com.br" class="btn-red">
-            Enviar E-mail
-        </a>
+                <div class="social-grid">
+                    <a class="social-link reveal" href="https://github.com/thyghyto" target="_blank" rel="noopener noreferrer">
+                        <span>GitHub</span>
+                        <small>@thyghyto</small>
+                    </a>
 
-    </div>
+                    <a class="social-link reveal" href="https://www.instagram.com/thighito1" target="_blank" rel="noopener noreferrer">
+                        <span>Instagram</span>
+                        <small>@thighito1</small>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-</section>
+        <section class="section section-block contact-section" id="contact">
+            <div class="container">
+                <div class="contact-box reveal">
+                    <span class="contact-label">CONTATO</span>
 
-<footer>
+                    <h2>Vamos criar algo incrível?</h2>
 
-    © 2026 Thighito • Membro da Iceveil Studios | Developed by <a href="https://thurpwa.iceveil.com.br" style="color: red;" target="_blank">thur_pwa</a>.
+                    <p>
+                        Entre em contato para novos projetos, parcerias ou ideias que merecem virar algo real.
+                    </p>
 
-</footer>
+                    <div class="contact-actions">
+                        <a href="mailto:thighito@iceveil.com.br" class="btn-red">Enviar E-mail</a>
+                        <a href="#home" class="btn-outline">Voltar ao topo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<script src="js/app.js"></script>
-<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+    </main>
 
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>
+                © 2026 Thighito • Membro da Iceveil Studios
+            </p>
+
+            <p>
+                Developed by
+                <a href="https://thurpwa.iceveil.com.br" target="_blank" rel="noopener noreferrer">
+                    thur_pwa
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1/bundled/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
