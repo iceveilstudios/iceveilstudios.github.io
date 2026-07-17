@@ -1,131 +1,175 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Thighito - Site | Membro de Iceveil Studios.</title>
-        <link rel="icon" type="image/png" href="logo-th.png"/>
-    </head>
-    <style>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thighito | Desenvolvedor Web</title>
 
+    <meta name="description" content="Portfólio oficial de Thighito, desenvolvedor web e membro da Iceveil Studios.">
 
-        body{
-            background:#000;
-            color:#fff;
-            position:relative;
-            overflow-x:hidden;
-            }
+    <link rel="icon" href="assets/logo-th.png">
+    <link rel="stylesheet" href="style.css">
 
-        body::before{
-            content:"";
-            position:fixed;
-            inset:0;
-            background:url("https://www.iceveil.com.br/assets/noise.png") repeat;
-            opacity:.08;
-            pointer-events:none;
-            z-index:-1;
-            }
-        .h1 {
-            color: #ffffff;
-        }
-        .p {
-            color: #ffffff;
-        }
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #000000;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px;
-        }
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
-            z-index: 9998;
-        }
-        .side-menu {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #000000;
-            color: #ffffff;
-            padding: 20px;
-            transition: left 0.3s ease-in-out;
-            z-index: 9999;
-        }
-        .side-menu a {
-            display: block;
-            color: #ffffff;
-            text-decoration: none;
-            margin-bottom: 10px;
-        }
-        .side-menu a:hover {
-            text-decoration: underline;
-        }
-        .side-menu.open {
-            left: 0;
-        }
-
-    </style>
-    <body>
     
-    <div class="menu-overlay" id="menuOverlay"></div>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <nav id="sideMenu" class="side-menu" aria-label="Menu lateral">
-        <a href="#top">Início</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#contato">Contato</a>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="noise"></div>
+<div id="glow"></div>
+
+<header>
+
+    <div class="logo">
+        <img src="assets/logo-th.png" alt="Logo">
+        <span>THIGHITO</span>
+    </div>
+
+    <nav>
+
+        <a href="#home">Início</a>
+        <a href="#projects">Projetos</a>
+        <a href="#social">Redes</a>
+        <a href="#contact">Contato</a>
+
     </nav>
 
-    <div class="loader" id="loader">
-    <h1>Carregando...</h1>
+</header>
+
+<section class="hero" id="home">
+
+    <span class="badge">
+        Desenvolvedor Web • Iceveil Studios
+    </span>
+
+    <h2>CRIANDO</h2>
+
+    <h1>EXPERIÊNCIAS</h1>
+
+    <h2>PARA A WEB</h2>
+
+    <p>
+
+        Interfaces modernas, elegantes e rápidas.
+        Transformando ideias em experiências digitais.
+
+    </p>
+
+    <div class="buttons">
+
+        <a href="#projects" class="btn-red">
+            Ver Projetos
+        </a>
+
+        <a href="#contact" class="btn-outline">
+            Contato
+        </a>
+
     </div>
 
-    <div id="content" style="display: none;">
-        <h1>Bem-vindo ao Thighito</h1>
-        <p>Este é o site oficial do Thighito, membro de Iceveil Studios.</p>
-        <p>Explore o conteúdo e descubra mais sobre nossos projetos.</p>
+</section>
+
+<section id="projects">
+
+    <div class="section-title">
+
+        <span>PORTFÓLIO</span>
+
+        <h2>Projetos</h2>
+
     </div>
 
-    </body>
-<script>
-    window.addEventListener('load', function() {
-        const loader = document.getElementById('loader');
-        const content = document.getElementById('content');
-        loader.style.display = 'none';
-        content.style.display = 'block';
-    });
+    <div class="cards">
 
-    const menuOverlay = document.getElementById('menuOverlay');
-    const sideMenu = document.getElementById('sideMenu');
+        <div class="card">
 
-    function toggleMenu() {
-        sideMenu.classList.toggle('open');
-        menuOverlay.style.display = sideMenu.classList.contains('open') ? 'block' : 'none';
-    }
+            <h3>Iceveil Studios</h3>
 
-    menuOverlay.addEventListener('click', toggleMenu);
-</script>  
+            <p>
+                Desenvolvimento do site institucional.
+            </p>
+
+            <button>Ver Projeto</button>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Landing Pages</h3>
+
+            <p>
+                Criação de páginas modernas.
+            </p>
+
+            <button>Ver Projeto</button>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Sistemas</h3>
+
+            <p>
+                Painéis administrativos e dashboards.
+            </p>
+
+            <button>Ver Projeto</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="social">
+
+    <div class="section-title">
+
+        <span>REDES</span>
+
+        <h2>Conecte-se</h2>
+
+    </div>
+
+    <div class="social-grid">
+
+        <a href="">GitHub</a>
+        <a href="#">Instagram</a>
+
+    </div>
+
+</section>
+
+<section id="contact">
+
+    <div class="contact-box">
+
+        <span>CONTATO</span>
+
+        <h2>Vamos criar algo incrível?</h2>
+
+        <p>
+            Entre em contato para novos projetos ou parcerias.
+        </p>
+
+        <a href="mailto:thighito@iceveil.com.br" class="btn-red">
+            Enviar E-mail
+        </a>
+
+    </div>
+
+</section>
+
+<footer>
+
+    © 2026 Thighito • Membro da Iceveil Studios
+
+</footer>
+
+<script src="app.js"></script>
+
+</body>
 </html>
