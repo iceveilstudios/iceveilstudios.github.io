@@ -1,5 +1,4 @@
 // ===============================
-// THIGHITO PORTFÓLIO
 // app.js
 // ===============================
 
@@ -194,5 +193,37 @@ function animate(dot) {
     }
 
     frame();
+
+}
+
+function lenis () {
+
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smooth: true,
+        direction: "vertical",
+        gestureDirection: "vertical",
+        smoothTouch: false,
+        touchMultiplier: 2,
+        infinite: false
+    });
+
+    const startLenis = () => {
+
+        lenis.on("scroll", e => {
+
+        });
+
+    }
+
+    function raf(time) {
+
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+
+    }
+
+    requestAnimationFrame(raf);
 
 }
