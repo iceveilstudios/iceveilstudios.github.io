@@ -10,11 +10,10 @@
     <link rel="icon" href="logo-th.png">
     <link rel="stylesheet" href="style.css">
 
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -29,45 +28,43 @@
     </div>
 
     <nav>
-
-        <a href="#home">Início</a>
-        <a href="#projects">Projetos</a>
-        <a href="#social">Redes</a>
-        <a href="#contact">Contato</a>
-
+        <a href="#home">inicio</a>
+        <a href="#projects">projetos</a>
+        <a href="#social">redes</a>
+        <a href="#contact">contato</a>
     </nav>
 
 </header>
 
 <section class="hero" id="home">
 
-    <span class="badge">
-        Desenvolvedor Web • Iceveil Studios
-    </span>
+    <span class="badge">Desenvolvedor Web • Iceveil Studios</span>
 
-    <h2>CRIANDO</h2>
+    <div class="terminal" id="boot-terminal">
+        <div class="terminal-bar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-amber"></span>
+            <span class="dot dot-green"></span>
+            <span class="terminal-path">thighito@iceveil:~$</span>
+        </div>
+        <div class="terminal-body" id="boot-body">
+        </div>
+    </div>
 
-    <h1>EXPERIÊNCIAS</h1>
-
-    <h2>PARA A WEB</h2>
+    <div class="hero-title">
+        <h2>CRIANDO</h2>
+        <h1><span class="glitch">EXPERIÊNCIAS</span></h1>
+        <h2>PARA A WEB</h2>
+    </div>
 
     <p>
-
         Interfaces modernas, elegantes e rápidas.
         Transformando ideias em experiências digitais.
-
     </p>
 
     <div class="buttons">
-
-        <a href="#projects" class="btn-red">
-            Ver Projetos
-        </a>
-
-        <a href="#contact" class="btn-outline">
-            Contato
-        </a>
-
+        <a href="#projects" class="btn-red">&gt; ver_projetos()</a>
+        <a href="#contact" class="btn-outline">&gt; contato()</a>
     </div>
 
 </section>
@@ -75,39 +72,42 @@
 <section id="projects">
 
     <div class="section-title">
-
-        <span>PORTFÓLIO</span>
-
+        <span class="path">ls ./projetos</span>
         <h2>Projetos</h2>
-
     </div>
 
     <div class="cards">
 
         <div class="card">
-
-            <h3>Iceveil Studios</h3>
-
-            <p>
-                Membro e amigo de fundadores da Iceveil Studios, uma empresa de desenvolvimento de software e jogos. Trabalhando em projetos de sistemas, landing pages e sites institucionais.
-            </p>
-
-            <button>Ver Projeto</button>
-
+            <div class="card-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-amber"></span>
+                <span class="dot dot-green"></span>
+                <span class="card-file">iceveil-studios.project</span>
+            </div>
+            <div class="card-body">
+                <h3>Iceveil Studios</h3>
+                <p>
+                    Membro e amigo de fundadores da Iceveil Studios, uma empresa de desenvolvimento de software e jogos. Trabalhando em projetos de sistemas, landing pages e sites institucionais.
+                </p>
+                <button class="card-cta">&gt; abrir</button>
+            </div>
         </div>
 
         <div class="card">
-
-            <h3>Iniciar Pesquisa?</h3>
-
-            <p>
-                Um jogo web de terror inspirado em um jogo indie de mesmo nome. Desenvolvido com HTML, CSS e JavaScript, o jogo oferece uma experiência imersiva e assustadora para os jogadores.
-            </p>
-
-            <a href="https://codigobinario.net.br" target="_blank" class="btn-red">
-                Ver Projeto
-            </a>
-
+            <div class="card-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-amber"></span>
+                <span class="dot dot-green"></span>
+                <span class="card-file">iniciar-pesquisa.exe</span>
+            </div>
+            <div class="card-body">
+                <h3>Iniciar Pesquisa?</h3>
+                <p>
+                    Um jogo web de terror inspirado em um jogo indie de mesmo nome. Desenvolvido com HTML, CSS e JavaScript, o jogo oferece uma experiência imersiva e assustadora para os jogadores.
+                </p>
+                <a href="https://codigobinario.net.br" target="_blank" class="card-cta">&gt; jogar</a>
+            </div>
         </div>
 
     </div>
@@ -117,18 +117,19 @@
 <section id="social">
 
     <div class="section-title">
-
-        <span>REDES</span>
-
+        <span class="path">cat ./redes</span>
         <h2>Conecte-se</h2>
-
     </div>
 
     <div class="social-grid">
-
-        <a href="https://github.com/thyghyto">GitHub</a>
-        <a href="https://www.instagram.com/thighito1">Instagram</a>
-
+        <a href="https://github.com/thyghyto" target="_blank">
+            <span class="handle">GitHub</span>
+            <span class="path">github.com/thyghyto</span>
+        </a>
+        <a href="https://www.instagram.com/thighito1" target="_blank">
+            <span class="handle">Instagram</span>
+            <span class="path">@thighito1</span>
+        </a>
     </div>
 
 </section>
@@ -136,27 +137,16 @@
 <section id="contact">
 
     <div class="contact-box">
-
-        <span>CONTATO</span>
-
+        <span class="path">contato --enviar</span>
         <h2>Vamos criar algo incrível?</h2>
-
-        <p>
-            Entre em contato para novos projetos ou parcerias.
-        </p>
-
-        <a href="mailto:thighito@iceveil.com.br" class="btn-red">
-            Enviar E-mail
-        </a>
-
+        <p>Entre em contato para novos projetos ou parcerias.</p>
+        <a href="mailto:thighito@iceveil.com.br" class="btn-red">&gt; enviar_email()</a>
     </div>
 
 </section>
 
 <footer>
-
-    © 2026 Thighito • Membro da Iceveil Studios | Developed by <a href="https://thurpwa.iceveil.com.br" style="color: red;" target="_blank">thur_pwa</a>.
-
+    © 2026 Thighito • Membro da Iceveil Studios | Developed by <a href="https://thurpwa.iceveil.com.br" target="_blank">thur_pwa</a>.
 </footer>
 
 <script src="app.js"></script>
