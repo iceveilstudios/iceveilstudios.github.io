@@ -1,14 +1,10 @@
-// ===============================
-// app.js
-// ===============================
-
 document.addEventListener("DOMContentLoaded", () => {
-    // -------------------------
-    // Lenis Smooth Scroll
-    // -------------------------
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     let lenis = null;
 
-    if (typeof Lenis !== "undefined") {
+    if (typeof Lenis !== "undefined" && !reduceMotion) {
         lenis = new Lenis({
             duration: 1.2,
             easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -26,9 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
         requestAnimationFrame(raf);
     }
 
-    // -------------------------
-    // Scroll suave nas âncoras
-    // -------------------------
     document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener("click", e => {
             const href = link.getAttribute("href");
@@ -42,52 +35,43 @@ document.addEventListener("DOMContentLoaded", () => {
                 lenis.scrollTo(target);
             } else {
                 target.scrollIntoView({
-                    behavior: "smooth",
+                    behavior: reduceMotion ? "auto" : "smooth",
                     block: "start"
                 });
             }
         });
     });
 
-    // -------------------------
-    // Navbar dinâmica
-    // -------------------------
     const header = document.querySelector("header");
 
     const updateHeader = () => {
         if (!header) return;
 
         if (window.scrollY > 50) {
-            header.style.background = "rgba(0,0,0,.92)";
-            header.style.borderBottom = "1px solid rgba(255,0,0,.25)";
-            header.style.backdropFilter = "blur(18px)";
-            header.style.webkitBackdropFilter = "blur(18px)";
+            header.style.background = "rgba(6,3,4,.92)";
+            header.style.borderBottom = "1px solid rgba(200,30,60,.3)";
         } else {
-            header.style.background = "rgba(5,5,5,.75)";
-            header.style.borderBottom = "1px solid rgba(255,0,0,.08)";
-            header.style.backdropFilter = "blur(12px)";
-            header.style.webkitBackdropFilter = "blur(12px)";
+            header.style.background = "rgba(8,4,5,.78)";
+            header.style.borderBottom = "1px solid rgba(200,30,60,.22)";
         }
     };
 
     updateHeader();
     window.addEventListener("scroll", updateHeader, { passive: true });
 
-    // -------------------------
-    // Reveal ao rolar
-    // -------------------------
     const reveal = document.querySelectorAll(
         ".card, .section-title, .contact-box, .social-grid a"
     );
 
-    reveal.forEach(el => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(60px)";
-        el.style.transition = "opacity .8s ease, transform .8s ease";
-        el.style.willChange = "opacity, transform";
-    });
+    if (!reduceMotion) {
+        reveal.forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(50px)";
+            el.style.transition = "opacity .8s ease, transform .8s ease";
+        });
+    }
 
-    if ("IntersectionObserver" in window) {
+    if ("IntersectionObserver" in window && !reduceMotion) {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -96,111 +80,110 @@ document.addEventListener("DOMContentLoaded", () => {
                     observer.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.15
-        });
+        }, { threshold: 0.15 });
 
         reveal.forEach(el => observer.observe(el));
-    } else {
-        reveal.forEach(el => {
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0)";
+    }
+
+    const bootBody = document.getElementById("boot-body");
+    const heroTitle = document.querySelector(".hero-title");
+    const heroP = document.querySelector(".hero p");
+    const heroButtons = document.querySelector(".buttons");
+
+    const bootLines = [
+        { text: "whoami", type: "prompt" },
+        { text: "thighito — desenvolvedor web", type: "out" },
+        { text: "status --studio", type: "prompt" },
+        { text: "membro ativo, Iceveil Studios", type: "out" }
+    ];
+
+    if (heroTitle) {
+        heroTitle.style.opacity = "0";
+        heroTitle.style.transform = "translateY(20px)";
+        heroTitle.style.transition = "opacity .8s ease, transform .8s ease";
+    }
+    if (heroP) { heroP.style.opacity = "0"; heroP.style.transition = "opacity .8s ease"; }
+    if (heroButtons) { heroButtons.style.opacity = "0"; heroButtons.style.transition = "opacity .8s ease"; }
+
+    function revealHeroContent() {
+        if (heroTitle) {
+            heroTitle.style.opacity = "1";
+            heroTitle.style.transform = "translateY(0)";
+        }
+        setTimeout(() => { if (heroP) heroP.style.opacity = "1"; }, 200);
+        setTimeout(() => { if (heroButtons) heroButtons.style.opacity = "1"; }, 400);
+    }
+
+    if (!bootBody) {
+        revealHeroContent();
+    } else if (reduceMotion) {
+        bootLines.forEach(line => {
+            const p = document.createElement("p");
+            p.className = line.type === "prompt" ? "prompt" : "out";
+            p.textContent = (line.type === "prompt" ? "$ " : "") + line.text;
+            bootBody.appendChild(p);
         });
+        revealHeroContent();
+    } else {
+        let lineIndex = 0;
+
+        function typeNextLine() {
+            if (lineIndex >= bootLines.length) {
+                revealHeroContent();
+                return;
+            }
+
+            const line = bootLines[lineIndex];
+            const p = document.createElement("p");
+            p.className = "type-line typing " + (line.type === "prompt" ? "prompt" : "out");
+            bootBody.appendChild(p);
+
+            const fullText = (line.type === "prompt" ? "$ " : "") + line.text;
+            let charIndex = 0;
+
+            const typeInterval = setInterval(() => {
+                p.textContent = fullText.slice(0, charIndex + 1);
+                charIndex++;
+
+                if (charIndex >= fullText.length) {
+                    clearInterval(typeInterval);
+                    p.classList.remove("typing");
+                    lineIndex++;
+                    setTimeout(typeNextLine, 220);
+                }
+            }, 28);
+        }
+
+        setTimeout(typeNextLine, 300);
     }
 
-    // -------------------------
-    // Hero fade
-    // -------------------------
-    const hero = document.querySelector(".hero");
-
-    if (hero) {
-        hero.style.opacity = "0";
-        hero.style.transform = "translateY(40px)";
-        hero.style.transition = "opacity 1.2s ease, transform 1.2s ease";
-
-        setTimeout(() => {
-            hero.style.opacity = "1";
-            hero.style.transform = "translateY(0)";
-        }, 250);
-    }
-
-    // -------------------------
-    // Ano automático
-    // -------------------------
     const year = document.getElementById("year");
     if (year) {
         year.textContent = new Date().getFullYear();
     }
-
-    // -------------------------
-    // Cursor Glow
-    // -------------------------
-    const glow = document.createElement("div");
-    glow.style.position = "fixed";
-    glow.style.width = "18px";
-    glow.style.height = "18px";
-    glow.style.borderRadius = "50%";
-    glow.style.background = "rgba(255,0,0,.45)";
-    glow.style.pointerEvents = "none";
-    glow.style.zIndex = "99999";
-    glow.style.filter = "blur(10px)";
-    glow.style.transition = "transform .08s linear, left .02s linear, top .02s linear";
-    glow.style.display = "none";
-
-    document.body.appendChild(glow);
 
     const isTouchDevice =
         "ontouchstart" in window ||
         navigator.maxTouchPoints > 0 ||
         window.matchMedia("(pointer: coarse)").matches;
 
-    if (!isTouchDevice) {
-        glow.style.display = "block";
+    if (!isTouchDevice && !reduceMotion) {
+        const glow = document.createElement("div");
+        glow.style.position = "fixed";
+        glow.style.width = "18px";
+        glow.style.height = "18px";
+        glow.style.borderRadius = "50%";
+        glow.style.background = "rgba(200,30,60,.45)";
+        glow.style.pointerEvents = "none";
+        glow.style.zIndex = "99999";
+        glow.style.filter = "blur(10px)";
+        glow.style.transition = "left .02s linear, top .02s linear";
+
+        document.body.appendChild(glow);
 
         window.addEventListener("mousemove", e => {
             glow.style.left = e.clientX - 9 + "px";
             glow.style.top = e.clientY - 9 + "px";
         }, { passive: true });
-    }
-
-    // -------------------------
-    // Partículas
-    // -------------------------
-    const particleCount = 25;
-
-    for (let i = 0; i < particleCount; i++) {
-        const dot = document.createElement("div");
-
-        dot.style.position = "fixed";
-        dot.style.width = "2px";
-        dot.style.height = "2px";
-        dot.style.borderRadius = "50%";
-        dot.style.background = "rgba(255,0,0,.25)";
-        dot.style.pointerEvents = "none";
-        dot.style.left = Math.random() * 100 + "vw";
-        dot.style.top = Math.random() * 100 + "vh";
-        dot.style.zIndex = "-1";
-
-        document.body.appendChild(dot);
-        animate(dot);
-    }
-
-    function animate(dot) {
-        const speed = 8 + Math.random() * 12;
-        let y = parseFloat(dot.style.top);
-
-        function frame() {
-            y -= 0.05 * speed;
-
-            if (y < -5) {
-                y = 105;
-                dot.style.left = Math.random() * 100 + "vw";
-            }
-
-            dot.style.top = y + "vh";
-            requestAnimationFrame(frame);
-        }
-
-        frame();
     }
 });
