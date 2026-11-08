@@ -1,0 +1,3 @@
+GitHub integration test
+
+This file was created successfully through the ChatGPT GitHub integration.
